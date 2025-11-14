@@ -4,8 +4,17 @@ version = "0.1.0"
 edition = "2021"
 publish = false
 
+[lib]
+crate-type = ["cdylib"]
+
 [dependencies]
+# Use the soroban SDK (release-candidate you used). 
+# Keep default features as the SDK recommends; if you see std-related errors later, we'll switch to default-features=false.
 soroban-sdk = "22.0.0-rc.1"
 
-[lib]
-crate-type = ["cdylib", "rlib"]
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
