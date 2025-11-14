@@ -2,7 +2,7 @@
 import React from "react";
 
 /**
- * Navigation Bar (Freighter Only)
+ * Navigation Bar 
  * -------------------------------------------------
  * - Shows brand + network
  * - Displays connected Freighter address

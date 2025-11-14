@@ -1,5 +1,5 @@
 /**
- * Stellar Utility Module (Freighter Only)
+ * Stellar Utility Module 
  * ---------------------------------------
  * - Detect Freighter
  * - Connect wallet

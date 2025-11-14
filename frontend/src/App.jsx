@@ -6,9 +6,9 @@ import ProposalForm from "./components/ProposeForm";     // Admin actions
 import ProposalsList from "./components/ProposalsList";  // User + Admin view
 
 /**
- * Asset Custody Solution (Freighter Edition)
+ * Asset Custody Solution 
  * ------------------------------------------
- * - Freighter login only (Rabet removed)
+ * - Freighter login only 
  * - Admin auto-detection using .env
  * - Admin can create custody accounts
  * - Users can view their own accounts
