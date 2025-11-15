@@ -1,146 +1,207 @@
-# 🐂 Bulwark Custody — Secure Stellar Asset Custody System
-
 <p align="center">
-  <img src="assets/logo.png" alt="Bulwark Custody Logo" width="250"/>
+  <img src="assets/logo.png" alt="Bulwark Custody Logo" width="240" style="max-width:80%;height:auto;">
 </p>
 
-<h1 align="center">Bulwark Custody</h1>
-
-
-A lightweight, full-stack multisig custody tool built on **Soroban**, **Rust (Axum/Tokio)**, and **React (Vite)**.  
-No database. No centralized storage. 100% blockchain-driven logic.
-
-Bulwark Custody enables users to create, approve, and execute Stellar asset custody actions using a clean UX and a simple relay backend.
+<h1 align="center">🐂 Bulwark Custody</h1>
+<p align="center">Secure Multisig Asset Custody on Stellar — Powered by Soroban, Rust, and React</p>
 
 ---
 
-## 👤 About Me
-- **Name:** Karthik H R 
-- Enthusiastic blockchain developer  
-- Passionate about Stellar + Rust ecosystems  
-- Interested in security, wallets, and smart contract design  
-- Deeply motivated to build simple tools that make blockchain safer for real users  
-- Focused on production-grade architectures with minimal moving parts
+## 🧩 Project Description
+
+Bulwark Custody is a lightweight, secure multisig custody system built on the **Stellar blockchain** using **Soroban smart contracts**, a **Rust (Axum/Tokio) backend**, and a **React (Vite)** frontend.  
+The system enables users to create custody proposals, sign them using wallets like **Freighter**, and relay them through a secure Rust backend that interacts directly with the Stellar network.
+
+No database is used — all state relies on:
+- **Soroban smart contract storage**
+- **Stellar network transactions**
+- **Frontend state + backend relay**
+
+This architecture keeps the system decentralized, verifiable, and easy to maintain.
 
 ---
 
-# 🧩 Project Description 
+## 🎯 Vision Statement
 
-Bulwark Custody is a lightweight multisig custody system designed for Stellar assets.  
-The project consists of a **Rust backend** that exposes simple HTTP routes, a **React frontend** for creating proposals and performing multisig approvals, and a **Soroban smart contract** that holds custody logic and finalizes operations.  
-
-No database is used; the system relies fully on Stellar/Soroban state and direct interactions between the frontend and backend. The backend acts as a secure relay that builds transactions, interacts with the Horizon RPC via `stellar_client.rs`, and executes contract calls using `soroban_runner.rs`. Users create proposals directly from the frontend, sign using wallet connectors like Freighter, and submit operations securely to the Stellar blockchain.  
-This architecture keeps everything simple, auditable, decentralized, and easy to extend.
+Our mission is to make secure asset custody accessible to everyone on Stellar — with simplicity, transparency, and safety at the core.  
+Bulwark Custody provides a clean multisig flow backed by Soroban and Rust, eliminating complex infrastructure while enhancing trust and decentralization.  
+We aim to demonstrate that secure custody doesn’t require enterprise-level tooling — only well-designed smart contracts, simple relayers, and intuitive UX.
 
 ---
 
-# 🎯 Vision Statement 
+## 🔗 Live Smart Contract
 
-Our vision is to make secure Stellar asset custody available to everyone — individuals, teams, and organizations — without complex infrastructure. By combining lightweight components (React, Rust, Soroban) and avoiding database dependencies, we create a custody workflow that is fully transparent, decentralized, and easy to audit. This project aims to show how multisig approvals and custody can be implemented cleanly on Stellar, empowering users to control their assets securely with minimal trust in intermediaries. Simplicity, safety, and clarity drive the design.
+**Soroban Contract ID:**  
+`CCBSCMH5GIEGBK3EFOYUJN5LXXY44YNUAPKUE7IC7WTLQ7MECSNLJM7K`
 
----
+**Network:** Futurenet  
+**RPC:** `https://rpc-futurenet.stellar.org`
 
-# 🛠 Software Development Plan 
-
-1. **Smart Contract Development (Soroban)**  
-   Implement custody logic: proposal structs, multisig thresholds, validation, and execution entrypoints inside `lib.rs`.
-
-2. **Backend Routing (Rust / Axum)**  
-   Set up `main.rs` and `router.rs` with routes for creating proposals, validating signatures, and relaying contract calls via `soroban_runner.rs`.
-
-3. **Stellar RPC Integration**  
-   Use `stellar_client.rs` to build, simulate, and submit Stellar/Soroban transactions with no database required.
-
-4. **Frontend UI (React/Vite)**  
-   Build wallet connection, proposal form, proposal list, and approval workflow using `WalletConnect.jsx`, `ProposalForm.jsx`, and related components.
-
-5. **Testing & Validation**  
-   Test cross-stack flow: contract → backend → frontend → Stellar. Validate multisig approvals and signing flow.
-
-6. **Deployment**  
-   Deploy Soroban contract, run backend with environment variables, and host frontend with Vite or static hosting.
-
----
-
-# 🧪 Project Architecture
-
-project_root/
-│
-├── backend/
-│ ├── Cargo.toml
-│ ├── .env.example
-│ └── src/
-│ ├── main.rs
-│ ├── router.rs
-│ ├── soroban_runner.rs
-│ ├── state.rs
-│ └── stellar_client.rs
-│
-├── frontend/
-│ ├── package.json
-│ ├── vite.config.js
-│ └── src/
-│ ├── App.css
-│ ├── App.jsx
-│ ├── index.css
-│ ├── main.jsx
-│ ├── components/
-│ │ ├── WalletConnect.jsx
-│ │ ├── ProposalList.jsx
-│ │ ├── ProposalForm.jsx
-│ │ └── Navbar.jsx
-│ └── utils/
-│ └── stellar.js
-│
-├── smartcontract/
-│ └── asset_custody/
-│ ├── Cargo.toml
-│ └── src/
-│ ├── lib.rs
-│ └── helpers.rs
-│
-└── README.md
-
----
-
-# ⚙️ Installation Guide 
-
-### 1️⃣ Install Dependencies
-- Rust (stable)
-- Node.js (18+)
-- Soroban CLI
-- A Stellar wallet extension (Freighter recommended)
-
----
-
-### 2️⃣ Backend Setup (Rust)
+### Verify Contract
 ```bash
-cd backend
-cp .env.example .env      # Fill in RPC URL + contract ID
-cargo build
-cargo run
-cd smartcontract/asset_custody
-soroban build
-# To deploy:
-# soroban contract deploy --wasm target/wasm32-unknown-unknown/release/asset_custody.wasm --rpc <RPC_URL>
-cd frontend
-npm install
-npm run dev
-
-I started this project because I wanted to understand how secure custody systems actually work. Stellar’s simplicity and Soroban’s smart contract model inspired me to build a multisig custody workflow that feels safe and transparent. Learning Rust, smart contracts, and decentralized transaction flows has taught me how important security is for real users. My goal is to build tools that make blockchain safer, clearer, and more accessible for everyone.
+soroban contract status \
+  --rpc https://rpc-futurenet.stellar.org \
+  --id CCBSCMH5GIEGBK3EFOYUJN5LXXY44YNUAPKUE7IC7WTLQ7MECSNLJM7K
 
 flowchart TD
-    A[Frontend (React/Vite)
-    - WalletConnect
-    - ProposalForm
-    - ProposalList] -->|REST API| B[Backend (Rust/Axum)
-    - main.rs
-    - router.rs
-    - soroban_runner.rs
-    - stellar_client.rs]
+  F[Frontend (React/Vite)\n- WalletConnect\n- ProposalForm\n- ProposalList] 
+  B[Backend (Rust/Axum)\n- router.rs\n- stellar_client.rs\n- soroban_runner.rs]
+  C[Soroban Smart Contract\n- lib.rs\n- helpers.rs]
+  S[(Stellar Network)]
 
-    B -->|Contract Call| C[Soroban Smart Contract
-    - lib.rs
-    - helpers.rs]
+  F -->|REST Calls| B
+  B -->|Contract Invoke| C
+  C --> S
+  B --> S
+Frontend (React)
+        │
+        ▼
+Backend (Rust/Axum)
+        │
+        ▼
+Soroban Smart Contract (WASM)
+        │
+        ▼
+Stellar Network (Futurenet)
 
-    C --> D[(Stellar Network)]
+## 🔧 Installation Guide
+
+This guide will help you set up the complete Bulwark Custody system on your local machine, including:
+
+- Rust backend (Axum)
+- Soroban smart contract (WASM)
+- React (Vite) frontend
+- Wallet integration (Freighter)
+- Futurenet RPC connectivity
+
+> **Note:** No database is required for this project.
+
+---
+
+## 📝 Prerequisites
+
+Before starting, install the following tools:
+
+### 🔹 System Requirements
+- macOS, Linux, or Windows (WSL recommended)
+- Git
+
+### 🔹 Required Software
+| Tool | Why | Install |
+|------|------|---------|
+| **Rust (Stable Toolchain)** | Backend server (Axum/Tokio) | https://rustup.rs |
+| **Node.js 18+** | React (Vite) frontend | https://nodejs.org |
+| **Soroban CLI** | Compile & deploy smart contracts | https://soroban.stellar.org |
+| **Freighter Wallet** | Sign Stellar transactions | https://freighter.app |
+| **Stellar Futurenet RPC** | Network endpoint | Already public |
+
+To verify installation:
+
+```bash
+rustc --version
+cargo --version
+node --version
+npm --version
+soroban --version
+
+project_root/
+├── backend/
+├── frontend/
+└── smartcontract/
+
+git clone https://github.com/Karthik-hr16/Asset_custody_soluton.git
+
+🚀 Backend (Rust / Axum)
+1️⃣ Enter backend folder
+cd backend
+
+2️⃣ Create .env
+cp .env.example .env
+
+3️⃣ Add required variables
+
+Paste inside backend/.env:
+
+SOROBAN_RPC_URL=https://rpc-futurenet.stellar.org
+CONTRACT_ID=CCBSCMH5GIEGBK3EFOYUJN5LXXY44YNUAPKUE7IC7WTLQ7MECSNLJM7K
+
+4️⃣ Build backend
+cargo build
+
+5️⃣ Run backend
+cargo run
+
+
+Backend runs at:
+
+http://localhost:3000
+
+🧠 Smart Contract (Soroban)
+1️⃣ Enter contract folder
+cd ../smartcontract/asset_custody
+
+2️⃣ Build contract
+soroban build
+
+3️⃣ Check deployed contract (already deployed)
+soroban contract status \
+  --rpc https://rpc-futurenet.stellar.org \
+  --id CCBSCMH5GIEGBK3EFOYUJN5LXXY44YNUAPKUE7IC7WTLQ7MECSNLJM7K
+
+4️⃣ (Optional) Invoke a function
+soroban contract invoke \
+  --rpc https://rpc-futurenet.stellar.org \
+  --id CCBSCMH5GIEGBK3EFOYUJN5LXXY44YNUAPKUE7IC7WTLQ7MECSNLJM7K \
+  --fn <function_name>
+
+🌐 Frontend (React / Vite)
+1️⃣ Enter frontend folder
+cd ../../frontend
+
+2️⃣ Install dependencies
+npm install
+
+3️⃣ Start dev server
+npm run dev
+
+
+Frontend runs at:
+
+http://localhost:5173
+
+4️⃣ Build production bundle
+npm run build
+
+5️⃣ Preview production bundle
+npm run preview
+
+🔗 Freighter Wallet Setup
+
+Install Freighter → https://freighter.app
+
+Open Freighter → Settings
+
+Select Futurenet network
+
+Approve signing requests when prompted
+
+🧪 Full Dev Workflow (Short Version)
+🟣 Terminal 1 — Backend
+cd backend
+cargo run
+
+🔵 Terminal 2 — Frontend
+cd frontend
+npm run dev
+
+🟢 Terminal 3 — Rebuild contract on changes
+cd smartcontract/asset_custody
+soroban build
+
+
+You are now ready to use Bulwark Custody locally!
+
+
+---
+
+
