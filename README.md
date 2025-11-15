@@ -51,7 +51,7 @@ We aim to demonstrate that secure custody doesn’t require enterprise-level too
 soroban contract status \
   --rpc https://rpc-futurenet.stellar.org \
   --id CCBSCMH5GIEGBK3EFOYUJN5LXXY44YNUAPKUE7IC7WTLQ7MECSNLJM7K
-
+  ```
 ## 📊 System Architecture
 
 flowchart TD
