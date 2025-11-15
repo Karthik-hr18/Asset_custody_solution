@@ -250,7 +250,7 @@ npm run preview
 
 1. Install Freighter → [https://freighter.app](https://freighter.app)
 2. Open Freighter → Settings
-3. Switch network → **Futurenet**
+3. Switch network → **Testnet**
 4. Approve signing prompts
 
 ---
