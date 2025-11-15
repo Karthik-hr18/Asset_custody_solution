@@ -113,9 +113,6 @@ soroban contract status \
 
 ## 📊 System Architecture
 
-### 🖥 Mermaid Diagram
-
-```mermaid
 flowchart TD
   F[Frontend (React/Vite)\n- WalletConnect\n- ProposalForm\n- ProposalList] 
   B[Backend (Rust/Axum)\n- router.rs\n- stellar_client.rs\n- soroban_runner.rs]
@@ -126,7 +123,6 @@ flowchart TD
   B -->|Contract Invoke| C
   C --> S
   B --> S
-```
 
 ### 🧱 Layer Overview
 
@@ -355,13 +351,6 @@ soroban build
 
 ---
 
-## 🧱 Project Overview Diagram 
 
-flowchart TD
-  U[User] --> F[Frontend]
-  F -->|REST| B[Backend]
-  B -->|Invoke| C[Soroban Contract]
-  C --> S[(Stellar Network)]
-  F -->|Sign| W[Freighter Wallet]
 
 
