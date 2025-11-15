@@ -35,8 +35,7 @@ Bulwark Custody provides a clean multisig flow backed by Soroban and Rust, elimi
 We aim to demonstrate that secure custody doesn’t require enterprise-level tooling — only well-designed smart contracts, simple relayers, and intuitive UX.
 
 ---
-
-## 🔗 Live Smart Contract
+# 🔗 Live Smart Contract
 
 **Soroban Contract ID:**  
 `CCBSCMH5GIEGBK3EFOYUJN5LXXY44YNUAPKUE7IC7WTLQ7MECSNLJM7K`
@@ -44,14 +43,79 @@ We aim to demonstrate that secure custody doesn’t require enterprise-level too
 **Network:** Futurenet  
 **RPC:** `https://rpc-futurenet.stellar.org`
 
-### Verify Contract
+---
+
+## 🔍 Verify Contract
+
 ```bash
 soroban contract status \
   --rpc https://rpc-futurenet.stellar.org \
   --id CCBSCMH5GIEGBK3EFOYUJN5LXXY44YNUAPKUE7IC7WTLQ7MECSNLJM7K
 
-📊 System Architecture
+Got you.
+You want **each section to look EXACTLY like your “🔍 Verify Contract” heading**:
 
+### Example you want to copy:
+
+```
+## 🔍 Verify Contract
+```
+
+So now you want:
+
+* **## 🔧 Backend Setup**
+* **## 🌐 Frontend Setup**
+* **## 🧠 Smart Contract Setup**
+* **## 🔗 Freighter Wallet Setup**
+* **## 🧪 Full Development Workflow**
+* **## 📝 Prerequisites**
+* **## 🏗 Project Structure**
+* **## 📥 Clone Repository**
+* **## 🔧 Installation Guide**
+* etc.
+
+Basically, **EVERY main section should use the same clean level-2 Markdown heading (##) with an emoji and a title**, just like "Verify Contract".
+
+Below is your **fully corrected, ready-to-paste README section** with ALL headings styled **exactly like Verify Contract**.
+
+---
+
+# ✅ **FINAL — ONE READY-TO-PASTE CLEAN MARKDOWN BLOCK**
+
+### All sections follow THIS format:
+
+**`## 🔧 Backend Setup`**
+**`## 🌐 Frontend Setup`**
+**`## 🧠 Smart Contract`**
+…and so on.
+
+---
+
+````markdown
+# 🔗 Live Smart Contract
+
+**Soroban Contract ID:**  
+`CCBSCMH5GIEGBK3EFOYUJN5LXXY44YNUAPKUE7IC7WTLQ7MECSNLJM7K`
+
+**Network:** Futurenet  
+**RPC:** `https://rpc-futurenet.stellar.org`
+
+---
+
+## 🔍 Verify Contract
+```bash
+soroban contract status \
+  --rpc https://rpc-futurenet.stellar.org \
+  --id CCBSCMH5GIEGBK3EFOYUJN5LXXY44YNUAPKUE7IC7WTLQ7MECSNLJM7K
+````
+
+---
+
+## 📊 System Architecture
+
+### 🖥 Mermaid Diagram
+
+```mermaid
 flowchart TD
   F[Frontend (React/Vite)\n- WalletConnect\n- ProposalForm\n- ProposalList] 
   B[Backend (Rust/Axum)\n- router.rs\n- stellar_client.rs\n- soroban_runner.rs]
@@ -62,8 +126,11 @@ flowchart TD
   B -->|Contract Invoke| C
   C --> S
   B --> S
-scss
-Copy code
+```
+
+### 🧱 Layer Overview
+
+```
 Frontend (React)
         │
         ▼
@@ -74,191 +141,227 @@ Soroban Smart Contract (WASM)
         │
         ▼
 Stellar Network (Futurenet)
-🔧 Installation Guide
+```
+
+---
+
+## 🔧 Installation Guide
+
 This guide sets up the complete Bulwark Custody system:
 
-Rust backend (Axum)
+* Rust backend (Axum)
+* React frontend (Vite)
+* Soroban smart contract
+* Freighter wallet integration
+* Futurenet RPC
 
-Soroban smart contract (WASM)
+> No database required.
 
-React frontend (Vite)
+---
 
-Freighter wallet integration
+## 📝 Prerequisites
 
-Futurenet RPC
+### 🔹 System Requirements
 
-No database is required.
+* macOS, Linux, or Windows (WSL recommended)
+* Git installed
 
-📝 Prerequisites
+### 🔹 Required Software
 
-🔹 System Requirements
-macOS, Linux, or Windows (WSL recommended)
+| Tool             | Purpose           | Install                                                    |
+| ---------------- | ----------------- | ---------------------------------------------------------- |
+| Rust (Stable)    | Backend server    | [https://rustup.rs](https://rustup.rs)                     |
+| Node.js 18+      | Frontend (Vite)   | [https://nodejs.org](https://nodejs.org)                   |
+| Soroban CLI      | Build contract    | [https://soroban.stellar.org](https://soroban.stellar.org) |
+| Freighter Wallet | Sign transactions | [https://freighter.app](https://freighter.app)             |
 
-Git installed
+### ✔ Verify tools
 
-🔹 Required Software
-Tool	Purpose	Install
-Rust (Stable)	Backend server	https://rustup.rs
-Node.js 18+	Frontend (Vite)	https://nodejs.org
-Soroban CLI	Build + deploy contracts	https://soroban.stellar.org
-Freighter Wallet	Sign transactions	https://freighter.app
-
-Check installations:
-
-bash
-Copy code
+```bash
 rustc --version
 cargo --version
 node --version
 npm --version
 soroban --version
+```
 
+---
 
-📁 Project Structure
-Copy code
+## 🏗 Project Structure
+
+```
 project_root/
 ├── backend/
 ├── frontend/
 └── smartcontract/
+```
 
-📥 Clone Repository
-bash
-Copy code
+---
+
+## 📥 Clone Repository
+
+```bash
 git clone https://github.com/Karthik-hr16/Asset_custody_soluton.git
-🚀 Backend Setup (Rust / Axum)
-1️⃣ Enter backend folder
-bash
-Copy code
+```
+
+---
+
+## 🔧 Backend Setup (Rust / Axum)
+
+### 1️⃣ Enter backend folder
+
+```bash
 cd backend
-2️⃣ Create environment file
-bash
-Copy code
+```
+
+### 2️⃣ Create `.env`
+
+```bash
 cp .env.example .env
-3️⃣ Add required variables in .env
-ini
-Copy code
+```
+
+### 3️⃣ Add variables
+
+```
 SOROBAN_RPC_URL=https://rpc-futurenet.stellar.org
 CONTRACT_ID=CCBSCMH5GIEGBK3EFOYUJN5LXXY44YNUAPKUE7IC7WTLQ7MECSNLJM7K
-4️⃣ Build
-bash
-Copy code
-cargo build
-5️⃣ Run backend
-bash
-Copy code
-cargo run
-Backend available at:
-➡️ http://localhost:3000
+```
 
-🧠 Smart Contract (Soroban)
-1️⃣ Enter contract directory
-bash
-Copy code
+### 4️⃣ Build
+
+```bash
+cargo build
+```
+
+### 5️⃣ Run backend
+
+```bash
+cargo run
+```
+
+➡ Backend: **[http://localhost:3000](http://localhost:3000)**
+
+---
+
+## 🧠 Smart Contract Setup (Soroban)
+
+### 1️⃣ Enter folder
+
+```bash
 cd ../smartcontract/asset_custody
-2️⃣ Build smart contract
-bash
-Copy code
+```
+
+### 2️⃣ Build contract
+
+```bash
 soroban build
-3️⃣ Check deployed contract
-bash
-Copy code
+```
+
+### 3️⃣ Verify deployment
+
+```bash
 soroban contract status \
   --rpc https://rpc-futurenet.stellar.org \
   --id CCBSCMH5GIEGBK3EFOYUJN5LXXY44YNUAPKUE7IC7WTLQ7MECSNLJM7K
-4️⃣ Optional — invoke a function
-bash
-Copy code
+```
+
+### 4️⃣ Optional — invoke function
+
+```bash
 soroban contract invoke \
   --rpc https://rpc-futurenet.stellar.org \
   --id CCBSCMH5GIEGBK3EFOYUJN5LXXY44YNUAPKUE7IC7WTLQ7MECSNLJM7K \
   --fn <function_name>
-🌐 Frontend Setup (React / Vite)
-1️⃣ Navigate to frontend
-bash
-Copy code
+```
+
+---
+
+## 🌐 Frontend Setup (React / Vite)
+
+### 1️⃣ Enter folder
+
+```bash
 cd ../../frontend
-2️⃣ Install dependencies
-bash
-Copy code
+```
+
+### 2️⃣ Install dependencies
+
+```bash
 npm install
-3️⃣ Start development server
-bash
-Copy code
+```
+
+### 3️⃣ Start dev server
+
+```bash
 npm run dev
-Frontend runs at:
-➡️ http://localhost:5173
+```
 
-4️⃣ Build production bundle
-bash
-Copy code
+➡ Frontend: **[http://localhost:5173](http://localhost:5173)**
+
+### 4️⃣ Production build
+
+```bash
 npm run build
-5️⃣ Preview production
-bash
-Copy code
 npm run preview
-🔗 Freighter Wallet Setup
-Install Freighter → https://freighter.app
+```
 
-Open Freighter → Settings
+---
 
-Switch network to Futurenet
+## 🔗 Freighter Wallet Setup
 
-Approve signing prompts when requested
+1. Install Freighter → [https://freighter.app](https://freighter.app)
+2. Open Freighter → Settings
+3. Switch network → **Futurenet**
+4. Approve signing prompts
 
-🧪 Full Development Workflow (Fast Mode)
-🟣 Terminal 1 — Backend
-bash
-Copy code
+---
+
+## 🧪 Full Development Workflow (Fast Mode)
+
+### 🟣 Terminal 1 — Backend
+
+```bash
 cd backend
 cargo run
-🔵 Terminal 2 — Frontend
-bash
-Copy code
+```
+
+### 🔵 Terminal 2 — Frontend
+
+```bash
 cd frontend
 npm run dev
-🟢 Terminal 3 — Rebuild smart contract on changes
-bash
-Copy code
+```
+
+### 🟢 Terminal 3 — Smart Contract rebuild
+
+```bash
 cd smartcontract/asset_custody
 soroban build
+```
+
+---
 
 ## ✨ Features
 
-Bulwark Custody provides secure, lightweight on-chain asset custody built on Stellar using Soroban smart contracts.
-
 ### 🔐 Core Features
-- **Multisig Custody Logic**  
-  Secure, on-chain proposal creation, approval, and execution.
 
-- **Wallet-based Authentication**  
-  Uses **Freighter** and other Stellar wallets for signing.
+* Multisig custody logic
+* Wallet authentication (Freighter)
+* No database — decentralized state
+* Rust backend relay
+* Soroban smart contract
+* React interface
+* Fully verifiable flows
 
-- **Decentralized State Storage**  
-  No database — all critical data lives on Soroban or the Stellar network.
+---
 
-- **Secure Backend Relay**  
-  Rust (Axum) backend builds and relays transactions safely.
+## 🧱 Project Overview Diagram 
 
-- **Futurenet Compatible**  
-  Fully deployed and functioning on Stellar Futurenet.
-
-- **User-Friendly Frontend**  
-  React + Vite interface for proposal creation and approvals.
-
-- **Global, Verifiable Flows**  
-  Every action is recorded on-chain and verifiable.
-
-
-## 🧱 Project Overview Diagram
-
-### 🎨 Mermaid Diagram (GitHub compatible)
-```mermaid
 flowchart TD
-  User --> F[Frontend (React / Vite)]
-  F -->|REST API| B[Backend (Rust / Axum)]
+  U[User] --> F[Frontend]
+  F -->|REST| B[Backend]
   B -->|Invoke| C[Soroban Contract]
   C --> S[(Stellar Network)]
-
-  F -->|Wallet Signatures| W[Freighter Wallet]
+  F -->|Sign| W[Freighter Wallet]
 
 
